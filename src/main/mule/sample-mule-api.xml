@@ -9,7 +9,11 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 		<http:listener-connection host="0.0.0.0" port="8081" />
 	</http:listener-config>
 	<flow name="sample-mule-apiFlow" doc:id="cc838cc3-f5ce-41a1-ac37-ca92c69ef6ce" >
-		<http:listener doc:name="Listener" doc:id="12aada47-6f48-4b19-bdf2-3bbe6903a619" config-ref="HTTP_Listener_config" path="/test"/>
+		<scheduler doc:name="Scheduler" doc:id="9a64cc26-c22c-4da8-b4c9-4dd51f93c989" >
+			<scheduling-strategy >
+				<fixed-frequency />
+			</scheduling-strategy>
+		</scheduler>
 		<ee:transform doc:name="Transform Message" doc:id="b4d129a5-5b52-415b-b252-94923779e06f" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0

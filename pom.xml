@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mycompany</groupId>
@@ -9,7 +11,7 @@
 
 	<name>sample-mule-api</name>
 
-	<properties>
+    <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
@@ -23,6 +25,24 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-clean-plugin</artifactId>
 				<version>3.2.0</version>
+
+				  <configuration>
+				    <cloudHubDeployment>
+				      <uri>https://anypoint.mulesoft.com</uri>
+				      <muleVersion>${app.runtime}</muleVersion>
+				      <username>${username}</username>
+				      <password>${password}</password>
+				      <applicationName>${cloudhub.application.name}</applicationName>
+				      <environment>${environment}</environment>
+				      <region>${region}</region>
+				      <workers>${workers}</workers>
+				      <workerType>${workerType}</workerType>
+				      <properties>
+				        <key>value</key>
+				      </properties>
+				    </cloudHubDeployment>
+				  </configuration>
+
 			</plugin>
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
@@ -30,6 +50,7 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 			</plugin>
+
 		</plugins>
 	</build>
 
